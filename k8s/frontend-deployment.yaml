@@ -28,7 +28,6 @@ spec:
 
       containers:
         - name: frontend
-
           image: ghcr.io/thakur-rohit-21/hireflow-frontend:build-8
           imagePullPolicy: IfNotPresent
 
@@ -50,24 +49,25 @@ spec:
             httpGet:
               path: /
               port: http
+            initialDelaySeconds: 5
             periodSeconds: 5
             timeoutSeconds: 3
-            failureThreshold: 12
+            failureThreshold: 30
 
           readinessProbe:
             httpGet:
               path: /
               port: http
+            initialDelaySeconds: 5
             periodSeconds: 10
             timeoutSeconds: 3
-            failureThreshold: 3
-            successThreshold: 1
+            failureThreshold: 5
 
           livenessProbe:
             httpGet:
               path: /
               port: http
+            initialDelaySeconds: 30
             periodSeconds: 20
             timeoutSeconds: 3
-            failureThreshold: 3
-            successThreshold: 1
+            failureThreshold: 5

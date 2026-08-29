@@ -28,7 +28,6 @@ spec:
 
       containers:
         - name: backend
-
           image: ghcr.io/thakur-rohit-21/hireflow-backend:build-8
           imagePullPolicy: IfNotPresent
 
@@ -62,38 +61,38 @@ spec:
             - name: CORS_ORIGIN
               value: "*"
 
-          # Gives Node.js application enough time to start
-          # before readiness/liveness checks begin.
           startupProbe:
             httpGet:
               path: /api/health
               port: http
+            initialDelaySeconds: 10
             periodSeconds: 5
             timeoutSeconds: 3
-            failureThreshold: 24
+            failureThreshold: 30
 
           readinessProbe:
             httpGet:
               path: /api/health
               port: http
+            initialDelaySeconds: 5
             periodSeconds: 10
             timeoutSeconds: 3
-            failureThreshold: 3
-            successThreshold: 1
+            failureThreshold: 5
 
           livenessProbe:
             httpGet:
               path: /api/health
               port: http
+            initialDelaySeconds: 30
             periodSeconds: 20
             timeoutSeconds: 3
-            failureThreshold: 3
-            successThreshold: 1
+            failureThreshold: 5
 
           resources:
             requests:
-              cpu: 100m
-              memory: 128Mi
+              cpu: "100m"
+              memory: "128Mi"
+
             limits:
-              cpu: 500m
-              memory: 512Mi
+              cpu: "500m"
+              memory: "512Mi"
