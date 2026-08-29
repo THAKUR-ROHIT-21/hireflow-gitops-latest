@@ -9,7 +9,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/DEVENDRA-5470/hireflow-gitops.git
+    repoURL: https://github.com/THAKUR-ROHIT-21/hireflow-gitops-latest.git
     targetRevision: main
     path: k8s
 
