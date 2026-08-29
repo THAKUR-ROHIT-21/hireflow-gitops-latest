@@ -28,7 +28,7 @@ spec:
 
       containers:
         - name: frontend
-          image: ghcr.io/thakur-rohit-21/hireflow-frontend:build-10
+          image: ghcr.io/thakur-rohit-21/hireflow-frontend:build-11
           imagePullPolicy: IfNotPresent
 
           ports:
